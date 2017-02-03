@@ -1,0 +1,19 @@
+{
+  "name": "zine",
+  "version": "0.0.1",
+  "description": "zine maker",
+  "main": "zine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alejandro Matamala",
+  "license": "ISC",
+  "bin": {
+    "zine": "./zine.js",
+    "load!": "./load.js"
+  },
+  "dependencies": {
+    "cli-color": "^1.1.0",
+    "create-html": "^1.1.0"
+  }
+}
