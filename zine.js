@@ -5,8 +5,8 @@ var exec = require('child_process').exec;
 var clc = require('cli-color');
 var fs = require('fs')
 var createHTML = require('create-html')
-var glob = require("glob")
-var imgs;
+var glob = require("glob") // Filter
+var imgs = [];
 
 // console.log(clc.green(process.argv[1]));
 
@@ -16,25 +16,14 @@ var arg1 = process.argv[2];
 // If Command is build then:
 
 if (arg1 == 'build') {
-  // fs.readdir('./', function(err, files) {
-  //
-  // if (err) console.log(err);
-  //
-  // console.log(files);
-  //
-  // for (var i = 0; i < files.length; i++) {
-  //
-  // }
-
 
 glob("**/*.jpg", function (er, files) {
 
-    // console.log(files);
 
-    for(var i = 0; i < files.length; i++) {
-       imgs = '<img src=' + files[i] + '>'; // Todo agregar comillas en files[i]
+    for (var i = 0; i < files.length; i++) {
+       imgs[i] = '<img src=' + '"'  + files[i] + '"' + '>'; // Todo agregar comillas en files[i]
     }
-    console.log(imgs);
+    // console.log(imgs);
 
 
     var html = createHTML({
@@ -43,7 +32,7 @@ glob("**/*.jpg", function (er, files) {
       css: 'example.css',
       lang: 'en',
       head: '<meta name="description" content="example">',
-      body: '<h1>Your images</h1> <br>' + imgs,
+      body: '<h1>A Simple Website with your images:</h1> <br>' + imgs,
       favicon: 'favicon.png'
     })
 
@@ -51,11 +40,12 @@ glob("**/*.jpg", function (er, files) {
   fs.writeFile('index.html', html, function (err) {
     if (err) console.log(err)
 
-    console.log(clc.red('I just created an HTML √√ '));
+    console.log(clc.green('Wohooo ! You have just created a website with your images ! '));
 
   })
 
 })
+
 } else {
   console.log( "it is not a command");
 }
