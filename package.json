@@ -9,8 +9,7 @@
   "author": "Alejandro Matamala",
   "license": "ISC",
   "bin": {
-    "zine": "./zine.js",
-    "load!": "./load.js"
+    "zine": "./zine.js"
   },
   "dependencies": {
     "cli-color": "^1.1.0",
